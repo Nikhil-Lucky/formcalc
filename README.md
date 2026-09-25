@@ -10,7 +10,7 @@ Double-click **index.html**. The compiled files in `assets/` are included, so th
 
 ## Develop
 
-Install Node.js 22 or newer, then run:
+Install Node.js 22, then run:
 
 ```sh
 npm ci
@@ -69,6 +69,12 @@ index.html            App shell; opens directly in your browser
 ## GitHub Pages
 
 After pushing the project to GitHub, open **Settings → Pages**, select **Deploy from a branch**, and choose **main / (root)**. Because compiled assets are committed, Pages needs no special build step.
+
+## Vercel
+
+Import `Nikhil-Lucky/formcalc` with the repository root as the Root Directory. The committed `vercel.json` selects the **Other** framework preset, runs `npm ci` and `npm run build`, and publishes **dist**. Node.js is pinned to the 22.x major version.
+
+The build creates `dist/index.html` and `dist/assets/` while preserving the root `index.html` for local use and GitHub Pages. Do not set the Output Directory to `public`. If you previously imported the project, deploy the latest commit containing `vercel.json`.
 
 To publish from this local folder after configuring Git and signing in to GitHub:
 

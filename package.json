@@ -17,5 +17,5 @@
     "esbuild": "^0.25.0",
     "typescript": "^5.9.0"
   },
-  "engines": { "node": ">=22" }
+  "engines": { "node": "22.x" }
 }
