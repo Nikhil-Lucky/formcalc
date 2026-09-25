@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="sage">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#edf0e9">
+  <meta name="description" content="FORM: a free, offline-ready 3D scientific calculator with history, memory and unit conversion.">
+  <title>FormCalc — Your everyday calculation space</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#expression">Skip to calculator</a>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="FORM home"><span class="brand-mark">f<span>°</span></span>FORM<span class="brand-dot">.</span></a>
+    <span class="header-caption">A little depth. A clearer mind.</span>
+    <div class="header-actions"><span class="offline"><i></i> Works offline</span><button class="icon-button" id="shortcuts" aria-label="Keyboard shortcuts" title="Keyboard shortcuts">⌨</button><a class="icon-button github-link" href="https://github.com/Nikhil-Lucky/formcalc" target="_blank" rel="noopener noreferrer" aria-label="View GitHub repository" title="View source on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.82.09-.65.35-1.08.64-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.81c.85 0 1.71.11 2.51.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.77c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></a></div>
+  </header>
+  <main class="app-shell">
+    <section class="page-heading"><div><div class="eyebrow">YOUR EVERYDAY CALCULATION SPACE</div><h1>Make room for <em>clarity.</em></h1><p>Small calculations. Big ideas. All in one place.</p></div><div class="theme-picker" aria-label="Color theme" role="group"><span>Make it yours</span><button data-theme="sage" class="swatch sage" aria-label="Sage theme" aria-pressed="true"></button><button data-theme="sand" class="swatch sand" aria-label="Sand theme" aria-pressed="false"></button><button data-theme="graphite" class="swatch graphite" aria-label="Graphite theme" aria-pressed="false"></button></div></section>
+    <div class="workspace-toolbar"><nav class="tool-tabs" aria-label="Tools"><button id="calculatorTab" class="tool-tab active" aria-pressed="true"><span aria-hidden="true">▦</span> Calculator</button><button id="converterTab" class="tool-tab" aria-pressed="false"><span aria-hidden="true">⇄</span> Unit converter</button></nav><span class="toolbar-note"><span class="tiny-dot"></span> A thoughtful tool for everyday thinking</span></div>
+    <div class="workspace-grid">
+      <section class="workbench" aria-label="Calculator workspace">
+        <div id="calculatorPanel">
+          <div class="bench-top"><div class="segmented" role="group" aria-label="Calculator mode"><button id="standardMode" class="active" aria-pressed="true">Standard</button><button id="scientificMode" aria-pressed="false">Scientific</button></div><button id="viewToggle" class="view-toggle" aria-pressed="true"><span aria-hidden="true">◇</span> 3D view <span class="switch"></span></button></div>
+          <div class="calculator-stage" id="stage"><div class="calculator-body" id="calculator">
+            <div class="device-header"><span>FORM<span class="device-slash"> / </span>02</span><span class="device-subtitle">DESIGNED TO THINK</span></div>
+            <div class="display-panel"><div class="display-top"><span id="displayMode">STANDARD</span><div><span id="memoryIndicator" hidden>M</span><button id="angleMode" aria-label="Angle mode: degrees. Click for radians.">DEG</button></div></div><label class="sr-only" for="expression">Expression</label><input id="expression" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="decimal" maxlength="256" placeholder="0" aria-describedby="expressionHint"><div class="result-row"><span id="resultPrefix">=</span><output id="result" aria-live="polite">0</output><button id="copyResult" class="copy-result" title="Copy result" aria-label="Copy result">⧉</button></div><div class="display-bottom"><span id="expressionHint">Ready when you are</span><span id="precisionLabel">12-digit precision</span></div></div>
+            <div class="memory-bar" role="group" aria-label="Memory"><button data-memory="clear" title="Clear memory">MC</button><button data-memory="recall" title="Recall memory">MR</button><button data-memory="add" title="Add result to memory">M+</button><button data-memory="subtract" title="Subtract result from memory">M−</button><span class="memory-divider"></span><button id="undo" title="Undo input (Ctrl+Z)" aria-label="Undo input">↶</button><button id="redo" title="Redo input (Ctrl+Y)" aria-label="Redo input">↷</button></div>
+            <div class="scientific-keys" id="scientificKeys" hidden></div>
+            <div class="keypad" id="keypad"></div>
+            <div class="device-footer"><span><i></i> LESS FRICTION. MORE FOCUS.</span><span>II</span></div>
+          </div></div>
+          <div class="view-controls" id="viewControls"><label for="tilt">Tilt <input id="tilt" type="range" min="-10" max="18" value="8"><span id="tiltValue">8°</span></label><label for="rotate">Rotate <input id="rotate" type="range" min="-18" max="18" value="-8"><span id="rotateValue">−8°</span></label><button id="resetView" title="Reset 3D angle">↺ <span>Reset</span></button></div>
+          <div class="bench-footer"><span><kbd>Enter</kbd> calculate</span><span><kbd>Esc</kbd> clear</span><button id="moreShortcuts">All shortcuts ↗</button></div>
+        </div>
+        <div id="converterPanel" hidden>
+          <div class="converter-heading"><span class="eyebrow">LESS MENTAL MATH</span><h2>A change of units.</h2><p>Same value. A different perspective.</p></div>
+          <div class="converter-form"><label for="category">What are we converting?</label><select id="category"></select><div class="conversion-card"><label for="fromValue">FROM</label><div class="conversion-line"><input id="fromValue" type="number" value="1" step="any" aria-label="Value to convert"><select id="fromUnit" aria-label="Convert from unit"></select></div></div><button id="swapUnits" class="swap-units" aria-label="Swap units">⇅</button><div class="conversion-card target"><label for="convertedValue">TO</label><output id="convertedValue" aria-live="polite">100</output><select id="toUnit" aria-label="Convert to unit"></select></div><p id="conversionNote" class="conversion-note"></p><button id="copyConversion" class="primary-button">Copy conversion <span>⧉</span></button></div>
+          <div class="converter-foot">Length · Mass · Temperature · Area · Volume · Time</div>
+        </div>
+      </section>
+      <aside class="history-panel" aria-label="Calculation history"><div class="history-heading"><h2><span aria-hidden="true">↺</span> History <span id="historyCount" class="count">0</span></h2><button id="clearHistory" class="text-button" disabled>Clear</button></div><p class="history-subtitle">A little space for your working.</p><div class="history-list" id="historyList"></div><div class="history-bottom"><span><i></i> Saved on this device</span><button id="exportHistory" aria-label="Export history as CSV" title="Export history as CSV" disabled>Export ↓</button></div><div class="tip-card"><span class="tip-icon">✦</span><div><strong>A little tip</strong><p id="tipText">Type an expression like <b>(24 + 16) × 3</b>. FORM handles the order of operations.</p></div></div></aside>
+    </div>
+    <footer class="page-footer"><span>Made for the moments between big ideas.</span><span>FORM / 02 <i>·</i> PRIVATE BY DESIGN</span></footer>
+  </main>
+  <dialog id="shortcutsDialog" aria-labelledby="shortcutsTitle"><div class="dialog-heading"><h2 id="shortcutsTitle">At your fingertips.</h2><button id="closeShortcuts" class="icon-button" aria-label="Close keyboard shortcuts">×</button></div><p>Use your keyboard or click the tactile keys.</p><dl class="shortcut-list"><div><dt>Calculate</dt><dd><kbd>Enter</kbd> or <kbd>=</kbd></dd></div><div><dt>Clear expression</dt><dd><kbd>Esc</kbd></dd></div><div><dt>Delete a digit</dt><dd><kbd>Backspace</kbd></dd></div><div><dt>Undo / redo input</dt><dd><kbd>Ctrl Z</kbd> / <kbd>Ctrl Y</kbd></dd></div><div><dt>Multiply / divide / power</dt><dd><kbd>*</kbd> <kbd>/</kbd> <kbd>^</kbd></dd></div><div><dt>Previous answer</dt><dd><kbd>ans</kbd></dd></div></dl><p class="dialog-note">Scientific: sin(30), sqrt(81), log(100), 5!, pi.<br>Angles use DEG or RAD. Percent means ÷ 100: 200 × 10% = 20. Expressions follow mathematical precedence.</p></dialog>
+  <div id="toast" role="status" class="toast" hidden></div>
+  <noscript><div class="noscript">Enable JavaScript to use the calculator.</div></noscript>
+</body>
+</html>
